@@ -1,0 +1,68 @@
+services:
+    postgres:
+        image: postgres:17.5
+        container_name: demo-postgres
+        expose:
+            - 5432
+        environment:
+            POSTGRES_DB: demo
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        restart: unless-stopped
+        networks:
+            - backend
+
+    redis:
+        image: redis:8.0.1
+        container_name: demo-redis
+        expose:
+            - 6379
+        restart: unless-stopped
+        networks:
+            - backend
+
+    app:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        image: demo-springboot:latest
+        container_name: demo-app
+        expose:
+            - 8080
+        environment:
+            DB_HOST: postgres
+            DB_PORT: 5432
+            DB_USER: postgres
+            DB_PASS: postgres
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+        depends_on:
+            - postgres
+            - redis
+        restart: unless-stopped
+        networks:
+            - backend
+
+    nginx:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: demo-nginx
+        ports:
+            - "80:80"
+        depends_on:
+            - app
+        restart: unless-stopped
+        networks:
+            - frontend
+            - backend
+
+volumes:
+    postgres-data:
+
+
+networks:
+    backend:
+    frontend:

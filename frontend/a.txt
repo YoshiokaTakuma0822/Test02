@@ -1,0 +1,5 @@
+npx create-next-app@latest
+npx shadcn@latest init
+npx shadcn@latest add input button card textarea tooltip popover
+npm install @stomp/stompjs date-fns
+npm install react-window @types/react-window

@@ -1,0 +1,19 @@
+curl http://localhost:8080/api/users/add-default | jq
+curl http://localhost:8080/api/users | jq
+curl http://localhost:8080/hello
+
+curl -X http://localhost:8080/api/messages send \
+  -H "Content-Type: application/json" \
+  -d '{"message":"Hello, world!"}' | jq
+curl http://localhost:8080/api/messages/recent | jq
+curl http://localhost:8080/api/users/active | jq
+
+psql "postgresql://postgres:postgres@localhost:5432/demo" -c "\d"
+psql "postgresql://postgres:postgres@localhost:5432/demo" -c "SELECT * FROM users;"
+psql "postgresql://postgres:postgres@localhost:5432/demo" -c "SELECT * FROM chat_messages;"
+psql "postgresql://postgres:postgres@localhost:5432/demo" -c "INSERT INTO chat_messages (user_id, content, created_at, type) SELECT 1, 'テストメッセージ ' || gs, now(), 'CHAT' FROM generate_series(1,10000) AS gs;"
+redis-cli FLUSHALL
+
+docker compose up -d --build
+
+./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"

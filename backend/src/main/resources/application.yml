@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: demo
+
+    datasource:
+        url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/demo
+        username: ${DB_USER:postgres}
+        password: ${DB_PASS:postgres}
+
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        show-sql: true
+        open-in-view: false
+
+    flyway:
+        enabled: true
+        locations: classpath:db/migration
+
+    data:
+        redis:
+            host: ${REDIS_HOST:localhost}
+            port: ${REDIS_PORT:6379}
