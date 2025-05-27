@@ -14,8 +14,9 @@ spring boot を起動
 F5 Debug Application
 
 ## インストール
-spring boot 4.0.0, maven, Java 24
-https://start.spring.io
-
 VSCode 拡張機能
 Extension Pack for Java 36,018,522
+
+## テンプレート
+spring boot 4.0.0, maven, Java 24
+https://start.spring.io
