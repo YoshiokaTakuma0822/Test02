@@ -17,3 +17,6 @@ http://localhost:3000
 ## インストール
 node 24 と npm
 https://nodejs.org/ja/download/
+
+## テンプレート
+`npx create-next-app@latest`
