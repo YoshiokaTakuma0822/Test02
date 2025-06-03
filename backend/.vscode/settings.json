@@ -1,9 +1,26 @@
 {
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "java.cleanup.actions": [
+        "renameFileToType",
+        "addOverride",
+        "organizeImports"
+    ],
+    "java.codeGeneration.hashCodeEquals.useInstanceof": true,
     "java.compile.nullAnalysis.mode": "automatic",
     "java.compile.nullAnalysis.nonnull": [
         "org.jspecify.annotations.NonNull"
     ],
     "java.compile.nullAnalysis.nullable": [
         "org.jspecify.annotations.Nullable"
-    ]
+    ],
+    "java.maven.downloadSources": true
 }
