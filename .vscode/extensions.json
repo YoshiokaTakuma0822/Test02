@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "github.copilot",
+        "mhutchie.git-graph",
+        "redhat.vscode-xml",
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+    ],
+}
